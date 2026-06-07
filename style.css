@@ -27,4 +27,14 @@ h1{
 p {
   font-size: 40px;
   font-weight: 700;
+  margin-top: 18px;
+}
+#reset-button{
+  font-size: 40px;
+  padding: 12px 30px;
+  color: rgb(180, 59, 46);
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  display: none;
 }

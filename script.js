@@ -35,12 +35,34 @@ humanScoreEl.textContent = `Your score: ${humanScore}`;
 computerScoreEl.textContent = `Computer score: ${computerScore}`;
 result.textContent = message;
 }
+const resetButton = document.querySelector("#reset-button");
+
+const disableButtons = () => {
+  rock.disabled = true;
+  paper.disabled = true;
+  scissor.disabled = true;
+  resetButton.style.display = "block";
+}
+
+resetButton.addEventListener("click", () => {
+humanScore = 0;
+computerScore = 0;
+rock.disabled = false;
+paper.disabled = false;
+scissor.disabled = false;
+resetButton.style.display = "none";
+humanScoreEl.textContent = `Your score: 0`;
+computerScoreEl.textContent = `Computer score: 0`;
+result.textContent = "";
+});
 
 const playGame = () => {
   if (humanScore === 5) {
     result.textContent = "You win the Game!!";
+    disableButtons();
   } else if (computerScore === 5) {
     result.textContent = "Computer win the Game!!";
+    disableButtons();
   }
 }
 
