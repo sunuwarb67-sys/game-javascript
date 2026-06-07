@@ -4,34 +4,65 @@ const paper = document.querySelector("#paper");
 const scissor = document.querySelector("#scissor");
 const result = document.querySelector("#result");
 
+const humanScoreEl = document.querySelector("#human-score");
+const computerScoreEl = document.querySelector("#computer-score");
+
+
+let humanScore = 0;
+let computerScore = 0;
+
+
 const getResult = (player, computer) => {
+  player = player.toLowerCase();
   let message;
   if (player === computer) {
     message = "It's draw !!";
-  } else if ((player === "rock" && computer === "paper") ||
-(player === "paper" && computer === "scissor") ||
-(player === "scissor" && computer === "rock")) {
-  message = "You lose";
+  } else if (player === "rock" && computer === "paper") {
+    message = "You lose ! Paper beats Rock";
+      computerScore++;
+  } else if(player === "paper" && computer === "scissor") {
+    message = "You lose ! Scissor beats Paper";
+      computerScore++;
+  } else if (player === "scissor" && computer === "rock") {
+  message = "You lose ! Rock beats Scissors";
+  computerScore++;
 } else {
-  message = "You win";
+    const capitalize = (word) => word[0].toUpperCase() + word.slice(1);
+  message = `You win ! ${capitalize(player)} beats ${capitalize(computer)}`;
+    humanScore++;
 }
+humanScoreEl.textContent = `Your score: ${humanScore}`;
+computerScoreEl.textContent = `Computer score: ${computerScore}`;
 result.textContent = message;
 }
+
+const playGame = () => {
+  if (humanScore === 5) {
+    result.textContent = "You win the Game!!";
+  } else if (computerScore === 5) {
+    result.textContent = "Computer win the Game!!";
+  }
+}
+
 
 rock.addEventListener("click", () => {
 const randomIndex = Math.floor(Math.random() * 3);
 const computerChoice = choices[randomIndex];
 getResult("rock", computerChoice);
+playGame();
 });
 
 paper.addEventListener("click", () => {
   const randomIndex = Math.floor(Math.random() * 3);
   const computerChoice = choices[randomIndex];
   getResult("paper", computerChoice);
+  playGame();
 });
 
 scissor.addEventListener("click", () => {
   const randomIndex = Math.floor(Math.random() * 3);
   const computerChoice = choices[randomIndex];
   getResult("scissor", computerChoice);
-})
+  playGame();
+});
+

@@ -12,14 +12,14 @@ h1{
 }
 .game {
   border: 2px solid black;
-  padding: 40px;
+  padding: 20px;
   width: 200px;
   text-align: center;
-  margin: 40px;
+  margin: 20px;
   background-color: rgb(64, 52, 52);
   color: #fff;
   font-size: 40px;
-  border-radius: 38px;
+  border-radius: 18px;
 }
 .game:hover {
   background-color: rgb(117, 117, 196);
